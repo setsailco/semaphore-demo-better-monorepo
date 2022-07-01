@@ -7,7 +7,7 @@ agent:
 blocks:
   - name: Test JS Service 1
     run:
-      when: "change_in('/javascript/js-service-1/')"
+      when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
     task:
       prologue:
         commands:
@@ -25,7 +25,7 @@ blocks:
             - echo 'We would upload docker image to ECS here'
   - name: Test JS Service 2
     run:
-      when: "change_in('/javascript/js-service-2/')"
+      when: "change_in('/javascript/js-service-2/', {default_branch: 'main'})"
     task:
       prologue:
         commands:
