@@ -10,10 +10,10 @@ blocks:
     run:
       when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
     task:
-      run:
-        when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
       jobs:
         - name: Run Tests
+          run:
+            when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
           commands:
             - checkout
             - cd javascript/js-service-1
