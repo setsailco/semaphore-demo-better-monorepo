@@ -12,8 +12,6 @@ blocks:
     task:
       jobs:
         - name: Run Tests
-          run:
-            when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
           commands:
             - checkout
             - cd javascript/js-service-1
@@ -27,7 +25,7 @@ blocks:
       when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
     task:
       jobs:
-        - name: Build Docker
+        - name: Build Docker Image
           commands:
             - checkout
             - cd javascript/js-service-1
@@ -54,9 +52,35 @@ blocks:
       when: "change_in('/javascript/js-service-2/', {default_branch: 'main'})"
     task:
       jobs:
-        - name: Build Docker
+        - name: Build Docker Image
           commands:
             - checkout
             - cd javascript/js-service-2
             - docker build -t js-service-2:$(git rev-parse HEAD) .
+            - echo 'We would upload docker image to ECS here'
+
+  - name: Test Go Service 1
+    dependencies: []
+    run:
+      when: "change_in('/golang/go-service-1/', {default_branch: 'main'})"
+    task:
+      jobs:
+        - name: Run Tests
+          commands:
+            - checkout
+            - cd golang/go-service-1
+            - sem-version go 1.18
+            - go test
+
+  - name: Build Go Service 1
+    dependencies: ["Test Go Service 1"]
+    run:
+      when: "change_in('/golang/go-service-1/', {default_branch: 'main'})"
+    task:
+      jobs:
+        - name: Build Docker Image
+          commands:
+            - checkout
+            - cd golang/go-service-1
+            - docker build -t go-service-1:$(git rev-parse HEAD) .
             - echo 'We would upload docker image to ECS here'
