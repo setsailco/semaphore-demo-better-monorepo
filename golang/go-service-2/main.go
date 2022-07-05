@@ -28,7 +28,7 @@ func Setup() *fiber.App {
 	// code 200
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.JSON(&fiber.Map{
-			"message": "Hello from go-service-2!",
+			"message": "Hello from go-service-2, testing!",
 		})
 	})
 
