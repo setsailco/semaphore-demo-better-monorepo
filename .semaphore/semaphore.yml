@@ -4,6 +4,14 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
+blocks:
+  - name: No-Op
+    dependencies: []
+    task:
+      jobs:
+        - name: No-Op
+          commands:
+            - echo "Initializing"
 promotions:
   - name: JS Service 1
     pipeline_file: js-service-1.yml
