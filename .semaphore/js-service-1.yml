@@ -7,8 +7,6 @@ agent:
 blocks:
   - name: Test JS Service 1
     dependencies: []
-    run:
-      when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
     task:
       jobs:
         - name: Run Tests
@@ -20,8 +18,6 @@ blocks:
             - node test.js
   - name: Build JS Service 1
     dependencies: ["Test JS Service 1"]
-    run:
-      when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
     task:
       jobs:
         - name: Build Docker Image
