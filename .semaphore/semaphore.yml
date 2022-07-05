@@ -13,19 +13,19 @@ blocks:
           commands:
             - echo "Initializing"
 promotions:
-  - name: JS Service 1
-    pipeline_file: js-service-1.yml
+  - name: "JS Service 1 - Test & Build"
+    pipeline_file: js-service-1/test-build.yml
     auto_promote:
       when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
-  - name: JS Service 2
-    pipeline_file: js-service-2.yml
+  - name: "JS Service 2 - Test & Build"
+    pipeline_file: js-service-2/test-build.yml
     auto_promote:
       when: "change_in('/javascript/js-service-2/', {default_branch: 'main'})"
-  - name: Go Service 1
-    pipeline_file: go-service-1.yml
+  - name: "Go Service 1 - Test & Build"
+    pipeline_file: go-service-1/test-build.yml
     auto_promote:
       when: "change_in('/golang/go-service-1/', {default_branch: 'main'})"
-  - name: Go Service 2
-    pipeline_file: go-service-2.yml
+  - name: "Go Service 2 - Test & Build"
+    pipeline_file: go-service-2/test-build.yml
     auto_promote:
       when: "change_in('/golang/go-service-2/', {default_branch: 'main'})"

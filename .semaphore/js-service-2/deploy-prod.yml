@@ -1,0 +1,14 @@
+version: "v1.0"
+name: JS Service 2
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Deploy JS Service 2 to Prod
+    dependencies: []
+    task:
+      jobs:
+        - name: Deploy Docker Image
+          commands:
+            - echo 'We would deploy docker image to prod here'
