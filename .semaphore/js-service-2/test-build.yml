@@ -26,3 +26,12 @@ blocks:
             - cd javascript/js-service-2
             - docker build -t js-service-2:$(git rev-parse HEAD) .
             - echo 'We would upload docker image to ECS here'
+promotions:
+  - name: "JS Service 2 - Deploy Dev"
+    pipeline_file: deploy-dev.yml
+    auto_promote:
+      when: "result = 'passed'"
+  - name: "JS Service 2 - Deploy Stage"
+    pipeline_file: deploy-stage.yml
+  - name: "JS Service 2 - Deploy Prod"
+    pipeline_file: deploy-prod.yml
