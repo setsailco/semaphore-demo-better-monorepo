@@ -27,10 +27,10 @@ blocks:
             - echo 'We would upload docker image to ECS here'
 promotions:
   - name: "Go Service 2 - Deploy Dev"
-    pipeline_file: go-service-2/deploy-dev.yml
+    pipeline_file: deploy-dev.yml
     auto_promote:
       when: "result = 'passed'"
   - name: "Go Service 2 - Deploy Stage"
-    pipeline_file: go-service-2/deploy-stage.yml
+    pipeline_file: deploy-stage.yml
   - name: "Go Service 2 - Deploy Prod"
-    pipeline_file: go-service-2/deploy-prod.yml
+    pipeline_file: deploy-prod.yml
