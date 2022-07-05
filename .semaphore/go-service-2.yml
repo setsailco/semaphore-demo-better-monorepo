@@ -1,0 +1,31 @@
+version: "v1.0"
+name: Go Service 2
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Test Go Service 2
+    dependencies: []
+    run:
+      when: "change_in('/golang/go-service-2/', {default_branch: 'main'})"
+    task:
+      jobs:
+        - name: Run Tests
+          commands:
+            - checkout
+            - cd golang/go-service-2
+            - sem-version go 1.18
+            - go test
+  - name: Build Go Service 2
+    dependencies: ["Test Go Service 2"]
+    run:
+      when: "change_in('/golang/go-service-2/', {default_branch: 'main'})"
+    task:
+      jobs:
+        - name: Build Docker Image
+          commands:
+            - checkout
+            - cd golang/go-service-2
+            - docker build -t go-service-2:$(git rev-parse HEAD) .
+            - echo 'We would upload docker image to ECS here'

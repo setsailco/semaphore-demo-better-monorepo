@@ -1,0 +1,32 @@
+version: "v1.0"
+name: JS Service 1
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Test JS Service 1
+    dependencies: []
+    run:
+      when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
+    task:
+      jobs:
+        - name: Run Tests
+          commands:
+            - checkout
+            - cd javascript/js-service-1
+            - nvm use
+            - npm ci
+            - node test.js
+  - name: Build JS Service 1
+    dependencies: ["Test JS Service 1"]
+    run:
+      when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
+    task:
+      jobs:
+        - name: Build Docker Image
+          commands:
+            - checkout
+            - cd javascript/js-service-1
+            - docker build -t js-service-1:$(git rev-parse HEAD) .
+            - echo 'We would upload docker image to ECS here'
