@@ -7,8 +7,6 @@ agent:
 blocks:
   - name: Test Go Service 1
     dependencies: []
-    run:
-      when: "change_in('/golang/go-service-1/', {default_branch: 'main'})"
     task:
       jobs:
         - name: Run Tests
@@ -19,8 +17,6 @@ blocks:
             - go test
   - name: Build Go Service 1
     dependencies: ["Test Go Service 1"]
-    run:
-      when: "change_in('/golang/go-service-1/', {default_branch: 'main'})"
     task:
       jobs:
         - name: Build Docker Image
