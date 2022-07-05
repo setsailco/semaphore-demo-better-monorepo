@@ -25,3 +25,12 @@ blocks:
             - cd golang/go-service-1
             - docker build -t go-service-1:$(git rev-parse HEAD) .
             - echo 'We would upload docker image to ECS here'
+promotions:
+  - name: "Go Service 1 - Deploy Dev"
+    pipeline_file: deploy-dev.yml
+    auto_promote:
+      when: "result = 'passed'"
+  - name: "Go Service 1 - Deploy Stage"
+    pipeline_file: deploy-stage.yml
+  - name: "Go Service 1 - Deploy Prod"
+    pipeline_file: deploy-prod.yml
