@@ -5,8 +5,8 @@
   "private": true,
   "license": "ISC",
   "workspaces": [
-    "javascript/*",
-    "golang/*"
+    "javascript/**",
+    "golang/**"
   ],
   "release": {
     "branches": [
