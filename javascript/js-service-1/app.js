@@ -6,7 +6,7 @@ function buildFastify () {
   })
 
   fastify.get('/', function (request, reply) {
-    reply.send({ message: 'Hello from js-service-1, woo!' })
+    reply.send({ message: 'Hello from js-service-1, woo again!' })
   })
 
   return fastify
