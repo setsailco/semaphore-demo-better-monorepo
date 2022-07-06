@@ -15,8 +15,8 @@ blocks:
             - cd javascript/js-service-1
             - nvm use
             - corepack enable
-            - pnpm install
-            - node test.js
+            - pnpm install --frozen-lockfile
+            - pnpm run test
   - name: Build JS Service 1
     dependencies: ["Test JS Service 1"]
     task:
