@@ -17,6 +17,6 @@ tap.test('GET `/` route', t => {
     t.error(err)
     t.equal(response.statusCode, 200)
     t.equal(response.headers['content-type'], 'application/json; charset=utf-8')
-    t.same(response.json(), { message: 'Hello from js-service-1!' })
+    t.same(response.json(), { message: 'Hello from js-service-1, woo!' })
   })
 })
