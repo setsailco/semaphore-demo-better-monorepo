@@ -29,7 +29,7 @@ func TestIndexRoute(t *testing.T) {
 			route:         "/",
 			expectedError: false,
 			expectedCode:  200,
-			expectedBody:  "{\"message\":\"Hello from go-service-1, change!\"}",
+			expectedBody:  "{\"message\":\"Hello from go-service-1, change BREAK!\"}",
 		},
 		{
 			description:   "non existing route",
