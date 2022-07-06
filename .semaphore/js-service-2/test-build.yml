@@ -14,7 +14,8 @@ blocks:
             - checkout
             - cd javascript/js-service-2
             - nvm use
-            - npm ci
+            - corepack enable
+            - pnpm install
             - node test.js
   - name: Build JS Service 2
     dependencies: ["Test JS Service 2"]
