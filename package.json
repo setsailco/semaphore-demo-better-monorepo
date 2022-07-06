@@ -7,10 +7,11 @@
     "multi-semantic-release": "^2.13.0"
   },
   "release": {
+    "branches": ["main"],
+    "repositoryUrl": "https://github.com/setsailco/semaphore-demo-better-monorepo.git",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator"
-    ],
-    "noCi": true
+    ]
   }
 }
