@@ -24,8 +24,7 @@ blocks:
         - name: Build Docker Image
           commands:
             - checkout
-            - cd javascript/js-service-2
-            - docker build -t js-service-2:$(git rev-parse HEAD) .
+            - docker build -t js-service-2:$(git rev-parse HEAD) -f javascript/js-service-2/Dockerfile .
             - echo 'We would upload docker image to ECS here'
 promotions:
   - name: "JS Service 2 - Deploy Dev"
