@@ -1,4 +1,4 @@
-// Trigger changes via comment
+// Initial release
 const server = require('./app')()
 
 server.listen({ port: 3000 }, (err, address) => {
