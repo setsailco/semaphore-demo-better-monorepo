@@ -1,4 +1,5 @@
 // Initial release
+// Test version bump
 const server = require('./app')()
 
 server.listen({ port: 3000 }, (err, address) => {
