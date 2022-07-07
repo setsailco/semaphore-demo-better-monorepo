@@ -1,0 +1,28 @@
+# $ sem create notification master-pipelines \
+#     --projects go-service-1 \
+#     --branches main \
+#     --pipelines "deploy-prod.yml" \
+#     --slack-endpoint $SLACK_WEBHOOK_URL \
+#     --slack-chennels "#release-testing" \
+
+apiVersion: v1alpha
+kind: Notification
+metadata:
+  name: release-notifications
+spec:
+  rules:
+    - name: "Prod Releases"
+      filter:
+        projects:
+          - /.*/
+        pipelines:
+          - deploy-prod.yml
+        branches:
+          - main
+        results:
+          - passed
+      notify:
+        slack:
+          endpoint: $SLACK_WEBHOOK_URL
+          channels:
+            - "#release-testing"
