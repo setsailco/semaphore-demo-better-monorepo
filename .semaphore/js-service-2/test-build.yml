@@ -30,8 +30,10 @@ promotions:
   - name: "JS Service 2 - Deploy Dev"
     pipeline_file: deploy-dev.yml
     auto_promote:
-      when: "result = 'passed'"
+      when: "result = 'passed' and branch = 'main'"
   - name: "JS Service 2 - Deploy Stage"
     pipeline_file: deploy-stage.yml
+    auto_promote:
+      when: "result = 'passed' and tag =~ '^js-service-2'"
   - name: "JS Service 2 - Deploy Prod"
     pipeline_file: deploy-prod.yml
