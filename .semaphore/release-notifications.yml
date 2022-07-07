@@ -23,6 +23,6 @@ spec:
           - passed
       notify:
         slack:
-          endpoint: https://hooks.slack.com/services/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
+          endpoint: $SLACK_WEBHOOK_URL
           channels:
             - "#release-testing"
