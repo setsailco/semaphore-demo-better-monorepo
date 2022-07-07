@@ -1,14 +1,11 @@
 {
   "name": "js-service-2",
-  "version": "1.0.0",
-  "description": "",
+  "version": "*",
+  "description": "JS Service 2",
   "main": "server.js",
   "scripts": {
-    "test": "tap --reporter=list --watch"
+    "test": "tap --reporter=list"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "fastify": "^4.2.0"
   },
