@@ -16,16 +16,16 @@ promotions:
   - name: "JS Service 1 - Test & Build"
     pipeline_file: js-service-1/test-build.yml
     auto_promote:
-      when: "change_in('/javascript/js-service-1/', {default_branch: 'main'})"
+      when: "change_in('/javascript/js-service-1/', {default_branch: 'main'}) or tag =~ '^js-service-1'"
   - name: "JS Service 2 - Test & Build"
     pipeline_file: js-service-2/test-build.yml
     auto_promote:
-      when: "change_in('/javascript/js-service-2/', {default_branch: 'main'})"
+      when: "change_in('/javascript/js-service-2/', {default_branch: 'main'}) or tag =~ '^js-service-2'"
   - name: "Go Service 1 - Test & Build"
     pipeline_file: go-service-1/test-build.yml
     auto_promote:
-      when: "change_in('/golang/go-service-1/', {default_branch: 'main'})"
+      when: "change_in('/golang/go-service-1/', {default_branch: 'main'}) or tag =~ '^go-service-1'"
   - name: "Go Service 2 - Test & Build"
     pipeline_file: go-service-2/test-build.yml
     auto_promote:
-      when: "change_in('/golang/go-service-2/', {default_branch: 'main'})"
+      when: "change_in('/golang/go-service-2/', {default_branch: 'main'}) or tag =~ '^go-service-2'"
