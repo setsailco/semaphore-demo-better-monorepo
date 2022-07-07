@@ -14,8 +14,9 @@ blocks:
             - checkout
             - cd javascript/js-service-1
             - nvm use
-            - npm ci
-            - node test.js
+            - corepack enable
+            - pnpm install --frozen-lockfile
+            - pnpm run test
   - name: Build JS Service 1
     dependencies: ["Test JS Service 1"]
     task:
@@ -23,8 +24,7 @@ blocks:
         - name: Build Docker Image
           commands:
             - checkout
-            - cd javascript/js-service-1
-            - docker build -t js-service-1:$(git rev-parse HEAD) .
+            - docker build -t js-service-1:$(git rev-parse HEAD) -f javascript/js-service-1/Dockerfile .
             - echo 'We would upload docker image to ECS here'
 promotions:
   - name: "JS Service 1 - Deploy Dev"

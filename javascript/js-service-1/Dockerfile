@@ -4,8 +4,8 @@ ENV NODE_ENV=production
 
 WORKDIR /app
 
-COPY package.json package-lock.json server.js app.js /app/
+COPY pnpm-lock.yaml pnpm-workspace.yaml javascript/js-service-1/server.js javascript/js-service-1/app.js /app/
 
-RUN npm ci
+RUN corepack enable && pnpm install --prod --frozen-lockfile --filter ...js-service-1
 
 CMD ["node", "server.js"]
