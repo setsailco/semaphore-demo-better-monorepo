@@ -9,6 +9,7 @@ import (
 
 // Initial release
 // Test version bump
+// Test version bump 2
 func main() {
 	// Use an external setup function in order
 	// to configure the app in tests as well
